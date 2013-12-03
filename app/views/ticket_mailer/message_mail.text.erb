@@ -1,0 +1,17 @@
+Hello: <%= @ticket.name %>
+
+<%- if @ticket.messages.last.responce? -%>
+Response:
+<%- else -%>
+You sent to support:
+<%-end-%>
+
+<%- @ticket.messages.ordered.each do |message| -%>
+
+    <%= message.body %>
+    =========================================================================================
+<%-end-%>
+
+<%= ticket_url(@ticket) %>
+=================================================================================================
+<%= history_url(encrypted_email: @ticket.encrypted_email) %>

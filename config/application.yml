@@ -1,0 +1,8 @@
+# Add application configuration variables here, as shown below.
+#
+PUSHER_APP_ID: "60128"
+PUSHER_KEY: 3ce4c7ef87dfc5ff4cc2
+PUSHER_SECRET: 39196079abeea2adde98
+
+GMAIL_USERNAME: ruvzi.test.app
+GMAIL_PASSWORD: GVUWVfpFypdz1vX

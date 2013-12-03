@@ -4,11 +4,14 @@
 capybara-*.html
 .rspec
 .rvmrc
+/.idea/*
 /.bundle
 /vendor/bundle
-/log/*
+/log/*.log
+/log/*.pid
 /tmp/*
 /db/*.sqlite3
+/db/*.sqlite3-journal
 /public/system/*
 /coverage/
 /spec/tmp/*
@@ -16,4 +19,9 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
-config/initializers/secret_token.rb
+
+# Ignore application configuration
+#/config/application.yml
+
+/config/*.sphinx.conf
+/db/sphinx

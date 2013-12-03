@@ -1,0 +1,25 @@
+- if @tickets.present?
+  %h1= "History tickets by &laquo;#{@tickets.first.email}&raquo".html_safe
+  %table
+    %tr
+      %th Name
+      %th Subject
+      %th State
+      %th Owner
+      %th Created At
+      %th
+
+    - @tickets.each do |ticket|
+      %tr
+        %td= ticket.name
+        %td= ticket.subject
+        %td= ticket.state
+        %td= ticket.owner
+        %td= l(ticket.created_at, format: :long)
+        %td= link_to 'Show Messages', ticket
+
+  %br
+
+  = link_to 'New Support Ticket', new_ticket_path
+- else
+  %h1 No history

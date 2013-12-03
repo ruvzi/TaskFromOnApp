@@ -1,0 +1,45 @@
+.page-header
+  %h1
+    Support Ticket
+    = @ticket.token
+  .row
+    .col-sm-12
+      %p
+        %b Subject:
+        = @ticket.subject
+
+  .row
+    .col-sm-6
+      %p
+        %b Email:
+        = @ticket.email
+    .col-sm-6
+      %p
+        %b Name:
+        = @ticket.name
+
+  .row
+    .col-sm-6
+      %p
+        %b State:
+        = @ticket.state
+    .col-sm-6
+      %p
+        %b Owner:
+        = @ticket.owner.try(:name) || 'Unassigned'
+
+.panel.panel-info
+  .panel-heading
+    .panel-title
+      Messages:
+    %ul.list-group.messages
+      - @ticket.messages.each do |message|
+        %li.list-group-item.message{class: message.system? ? 'system' : message.responce? ? 'responce' : ''}
+          .body= message.body
+          .details
+            .author= message.author.try(:username) || 'You'
+            .date= l(message.created_at, format: :short)
+
+
+%hr
+= link_to 'History', history_path(encrypted_email: @ticket.encrypted_email)

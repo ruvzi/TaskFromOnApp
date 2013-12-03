@@ -1,0 +1,31 @@
+= form_for @ticket, html: { id: 'ticket_form', class: 'form-horizontal'} do |f|
+  - if @ticket.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@ticket.errors.count, "error")} prohibited this ticket from being saved:"
+      %ul
+        - @ticket.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :name, placeholder: Ticket.human_attribute_name(:name), class: 'form-control', minlength: "2", required: true
+
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :email, placeholder: Ticket.human_attribute_name(:email), class: 'form-control', required: true, email: true
+
+  .form-group
+    = f.label :subject, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :subject, placeholder: Ticket.human_attribute_name(:subject), class: 'form-control', required: true
+
+  = f.fields_for(:messages, @ticket.messages.build) do |m|
+    .form-group
+      = m.label :body, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = m.text_area :body, row: 5, placeholder: Message.human_attribute_name(:body), class: 'form-control', required: true
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit 'Create', class: 'btn btn-default'

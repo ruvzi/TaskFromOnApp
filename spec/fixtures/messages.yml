@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ticket: 
+  admin: 
+  body: MyText
+  token: MyString
+  system: false
+
+two:
+  ticket: 
+  admin: 
+  body: MyText
+  token: MyString
+  system: false

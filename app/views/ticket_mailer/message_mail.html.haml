@@ -1,0 +1,16 @@
+%h3
+  Hello:
+  = @ticket.name
+%p
+%h5
+  - if @ticket.messages.last.responce?
+    Response:
+  - else
+    You sent to support:
+- @ticket.messages.ordered.each_with_index do |message, i|
+  %p
+  = simple_format(message.body, style: "margin-left: #{15*i}px")
+%p
+%p= link_to('Show Ticket', ticket_url(@ticket))
+%hr
+%p= link_to('Support Tickets History', history_url(encrypted_email: @ticket.encrypted_email))
